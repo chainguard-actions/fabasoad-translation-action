@@ -1,0 +1,37 @@
+{
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "complexity": {
+        "noAdjacentSpacesInRegex": "error",
+        "noArguments": "error",
+        "noExtraBooleanCast": "error",
+        "noUselessCatch": "error"
+      },
+      "correctness": {
+        "noUndeclaredVariables": "error",
+        "noUnusedLabels": "error",
+        "noUnusedVariables": "error",
+        "useJsxKeyInIterable": "error"
+      },
+      "style": {
+        "useBlockStatements": "error",
+        "useConst": "error",
+        "useSingleVarDeclarator": "error"
+      },
+      "suspicious": {
+        "noCatchAssign": "error",
+        "noEmptyBlockStatements": "warn",
+        "noPrototypeBuiltins": "error",
+        "noVar": "error",
+        "useIterableCallbackReturn": "off"
+      }
+    },
+    "includes": ["src/**", "tests/**"]
+  },
+  "javascript": {
+    "globals": ["Atomics", "SharedArrayBuffer", "jest", "afterEach", "beforeAll", "beforeEach", "expect", "test", "describe"]
+  },
+  "overrides": [{ "includes": ["**/*.spec.ts", "**/*.spec.tsx"] }]
+}
