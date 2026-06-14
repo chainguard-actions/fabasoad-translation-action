@@ -9,6 +9,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
 | v4.2.2 | [`v4.2.2`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.2) | [`7ac75a1`](https://github.com/fabasoad/translation-action/commit/7ac75a16abe8199e713775f8bbb405ba84d94c2a) |
+| v4.2.3 | [`v4.2.3`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.3) | [`1c80997`](https://github.com/fabasoad/translation-action/commit/1c80997dbbcc8dbe8b7bc7cd3ac4d8479964d464) |
 | v4.2.4 | [`v4.2.4`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.4) | [`1476a9d`](https://github.com/fabasoad/translation-action/commit/1476a9db97feaa816029bc027103eb89f3b017bf) |
 
 ## Privacy
