@@ -1,0 +1,46 @@
+{
+  "name": "translation-action",
+  "version": "4.2.1",
+  "description": "This GitHub action translates any text from any language to any language.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node24 --outfile=dist/index.js",
+    "lint": "biome lint --write src",
+    "test": "jest --config=jest.config.json --json --outputFile=jest-report.json --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabasoad/translation-action.git"
+  },
+  "keywords": [
+    "actions",
+    "translation",
+    "translator",
+    "lang"
+  ],
+  "author": "Yevhen Fabizhevskyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fabasoad/translation-action/issues"
+  },
+  "homepage": "https://github.com/fabasoad/translation-action#readme",
+  "dependencies": {
+    "@actions/core": "~3.0.0",
+    "cross-fetch": "~4.1.0",
+    "deepl-node": "~1.24.0",
+    "google-translate-api-x": "~10.7.2",
+    "typed-rest-client": "~2.2.0"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-translate": "~3.1016.0",
+    "@biomejs/biome": "~2.4.9",
+    "@types/jest": "~30.0.0",
+    "dotenv": "~17.3.1",
+    "esbuild": "~0.27.4",
+    "jest": "~30.3.0",
+    "jest-circus": "~30.3.0",
+    "ts-jest": "~29.4.6",
+    "typescript": "~6.0.2"
+  },
+  "packageManager": "yarn@4.13.0"
+}
