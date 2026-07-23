@@ -1,5 +1,5 @@
 ---
-name: Test MyMemory basic translation
+name: Test file source input
 on:
   workflow_dispatch:
 jobs:
@@ -25,10 +25,14 @@ jobs:
           ln -sf "$NODE_BIN" "$HOME/.local/bin/node24"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
           echo "node24 setup complete"
+      - name: Create source file
+        run: |
+          echo "Hello" > "$GITHUB_WORKSPACE/source.txt"
+          echo "Source file created: $(cat $GITHUB_WORKSPACE/source.txt)"
       - id: action
         uses: .
         with:
-          source: "Hello"
+          source: "${{ github.workspace }}/source.txt"
           provider: "mymemory"
           lang: "en|fr"
       - name: Assert output text is non-empty
@@ -37,7 +41,7 @@ jobs:
         run: |
           echo "actual: $ACTUAL"
           if [ -z "$ACTUAL" ]; then
-            echo "FAIL: expected non-empty translated text"
+            echo "FAIL: expected non-empty translated text from file source"
             exit 1
           fi
-          echo "PASS: got translated text: $ACTUAL"
+          echo "PASS: got translated text from file: $ACTUAL"

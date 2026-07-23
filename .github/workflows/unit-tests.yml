@@ -1,0 +1,25 @@
+---
+name: Unit Tests
+
+on: # yamllint disable-line rule:truthy
+  pull_request:
+    paths:
+      - dist/**
+      - src/**
+      - vitest.config.ts
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}
+
+defaults:
+  run:
+    shell: sh
+
+jobs:
+  vitest:
+    name: Vitest
+    uses: fabasoad/reusable-workflows/.github/workflows/wf-js-unit-tests.yml@10062f8186847226cb4865efbb8047795d372bae # main
+    permissions:
+      contents: read
+    secrets: inherit # pragma: allowlist secret
