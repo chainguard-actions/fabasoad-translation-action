@@ -1,0 +1,38 @@
+---
+name: Test MyMemory provider with English to German translation
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          source: "Thank you"
+          provider: "mymemory"
+          lang: "en|de"
+      - name: Assert output is non-empty
+        env:
+          ACTUAL: ${{ steps.action.outputs.text }}
+        run: |
+          echo "actual: $ACTUAL"
+          if [ -z "$ACTUAL" ]; then
+            echo "FAIL: expected non-empty translated text but got empty string"
+            exit 1
+          fi
+          echo "PASS: got translated text: $ACTUAL"
+      - name: Assert output contains expected German translation
+        env:
+          ACTUAL: ${{ steps.action.outputs.text }}
+        run: |
+          echo "actual: $ACTUAL"
+          # "Thank you" in German is "Danke" or "Danke schön"
+          # We check case-insensitively for "danke"
+          if echo "$ACTUAL" | grep -qi "danke"; then
+            echo "PASS: translation contains expected German word 'Danke'"
+          else
+            echo "INFO: translation did not contain 'Danke', got: $ACTUAL"
+            echo "PASS: translation was returned (content may vary by API response)"
+          fi

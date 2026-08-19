@@ -1,5 +1,5 @@
 ---
-name: Test MyMemory provider basic translation
+name: Test MyMemory provider with file as source
 on:
   workflow_dispatch:
 jobs:
@@ -7,19 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Create source file
+        run: |
+          echo -n "Good morning" > /tmp/source.txt
       - id: translate
         uses: .
         with:
-          source: "Hello"
+          source: "/tmp/source.txt"
           provider: "mymemory"
-          lang: "en|es"
+          lang: "en|fr"
       - name: Assert output is non-empty
         env:
           ACTUAL: ${{ steps.translate.outputs.text }}
         run: |
           echo "actual: $ACTUAL"
           if [ -z "$ACTUAL" ]; then
-            echo "FAIL: expected non-empty translated text"
+            echo "FAIL: expected non-empty translated text from file source"
             exit 1
           fi
-          echo "PASS: got translated text: $ACTUAL"
+          echo "PASS: got translated text from file: $ACTUAL"

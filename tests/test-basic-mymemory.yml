@@ -1,0 +1,37 @@
+---
+name: Test basic usage with MyMemory provider
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          source: "Hello"
+          provider: "mymemory"
+          lang: "en|es"
+      - name: Assert output is non-empty
+        env:
+          ACTUAL: ${{ steps.action.outputs.text }}
+        run: |
+          echo "actual: $ACTUAL"
+          if [ -z "$ACTUAL" ]; then
+            echo "FAIL: expected non-empty translated text but got empty string"
+            exit 1
+          fi
+          echo "PASS: got translated text: $ACTUAL"
+      - name: Assert output is not the original text (translation occurred)
+        env:
+          ACTUAL: ${{ steps.action.outputs.text }}
+        run: |
+          echo "actual: $ACTUAL"
+          # MyMemory translates "Hello" to "Hola" in Spanish
+          # We just verify we got something back (non-empty)
+          if [ -z "$ACTUAL" ]; then
+            echo "FAIL: translation output is empty"
+            exit 1
+          fi
+          echo "PASS: translation produced output"

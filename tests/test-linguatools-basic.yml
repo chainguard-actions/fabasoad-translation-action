@@ -1,5 +1,5 @@
 ---
-name: Test MyMemory provider basic translation
+name: Test Linguatools provider basic translation
 on:
   workflow_dispatch:
 jobs:
@@ -10,9 +10,9 @@ jobs:
       - id: translate
         uses: .
         with:
-          source: "Hello"
-          provider: "mymemory"
-          lang: "en|es"
+          source: "Hallo"
+          provider: "linguatools"
+          lang: "de-en"
       - name: Assert output is non-empty
         env:
           ACTUAL: ${{ steps.translate.outputs.text }}
