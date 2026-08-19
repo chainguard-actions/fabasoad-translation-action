@@ -1,5 +1,5 @@
 ---
-name: Test Google provider translation
+name: Test MyMemory provider translation
 on:
   workflow_dispatch:
 jobs:
@@ -10,9 +10,9 @@ jobs:
       - id: action
         uses: .
         with:
-          provider: google
-          lang: "ms|en"
-          source: "Kemenangan"
+          provider: mymemory
+          lang: "en|it"
+          source: "Hello"
       - name: Assert output is not empty
         env:
           ACTUAL: ${{ steps.action.outputs.text }}
@@ -23,14 +23,14 @@ jobs:
             exit 1
           fi
           echo "PASS: got translated text: $ACTUAL"
-      - name: Assert output contains expected translation
+      - name: Assert output contains expected Italian translation
         env:
           ACTUAL: ${{ steps.action.outputs.text }}
         run: |
           echo "actual: $ACTUAL"
           LOWER=$(echo "$ACTUAL" | tr '[:upper:]' '[:lower:]')
-          if [ "$LOWER" != "victory" ]; then
-            echo "FAIL: expected 'victory' but got '$LOWER'"
+          if [ "$LOWER" != "ciao" ]; then
+            echo "FAIL: expected 'ciao' but got '$LOWER'"
             exit 1
           fi
           echo "PASS"
