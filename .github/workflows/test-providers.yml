@@ -1,0 +1,71 @@
+---
+name: Test providers
+
+on: # yamllint disable-line rule:truthy
+  pull_request:
+    paths:
+      - .github/workflows/test-providers.yml
+      - dist/**
+      - src/**
+      - action.yml
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}
+
+defaults:
+  run:
+    shell: sh
+
+jobs:
+  test-providers:
+    name: ${{ matrix.provider }} (${{ matrix.api_key == '' && 'Free' || 'Paid' }})
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - provider: "deepl"
+            lang: "en-uk"
+            source: "Love"
+            expected: "Любов"
+            api_key: "DEEPL_API_KEY" # pragma: allowlist secret
+          - provider: "google"
+            lang: "en|zh-CN"
+            source: "Love"
+            expected: "爱"
+          - provider: "linguatools"
+            lang: "en-de"
+            source: "Love"
+            expected: "Love"
+          - provider: "mymemory"
+            lang: "en|sw"
+            source: "Love"
+            expected: "Upendo"
+          - provider: "mymemory"
+            lang: "en|pt"
+            source: "Love"
+            expected: "Amor"
+            api_key: "MYMEMORY_API_KEY" # pragma: allowlist secret
+    steps:
+      - name: Checkout ${{ github.repository }}
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+      - name: Translate (${{ matrix.provider }}, ${{ matrix.lang }})
+        uses: ./
+        id: result
+        with:
+          provider: ${{ matrix.provider }}
+          lang: ${{ matrix.lang }}
+          source: ${{ matrix.source }}
+          api_key: "${{ matrix.api_key == '' && '' || secrets[matrix.api_key] }}"
+      - name: Validate ${{ matrix.provider }} translation result
+        env:
+          MATRIX_SOURCE: ${{ matrix.source }}
+          RESULT_TEXT: ${{ steps.result.outputs.text }}
+          MATRIX_EXPECTED: ${{ matrix.expected }}
+        run: |
+          echo "'${MATRIX_SOURCE}' has been translated to '${RESULT_TEXT}'"
+          [ "${RESULT_TEXT}" = "${MATRIX_EXPECTED}" ] || exit 1;

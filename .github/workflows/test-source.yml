@@ -1,0 +1,60 @@
+---
+name: Test source
+
+on: # yamllint disable-line rule:truthy
+  pull_request:
+    paths:
+      - .github/workflows/test-source.yml
+      - dist/**
+      - src/**
+      - action.yml
+  push:
+    branches:
+      - main
+
+defaults:
+  run:
+    shell: sh
+
+jobs:
+  test-source:
+    name: Source as ${{ matrix.source }}
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      TEXT: "Love"
+      EXPECTED: "Любов"
+    strategy:
+      matrix:
+        source: ["file", "text"]
+    steps:
+      - name: Checkout ${{ github.repository }}
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+      - name: Prepare source
+        id: params
+        env:
+          MATRIX_SOURCE: ${{ matrix.source }}
+        run: |
+          if [ "${MATRIX_SOURCE}" = "file" ]; then
+            source="source.txt"
+            echo "${TEXT}" > "${source}"
+          else
+            source="${TEXT}"
+          fi
+          echo "source=${source}" >> "$GITHUB_OUTPUT"
+      - name: Translate
+        uses: ./
+        id: translate
+        with:
+          provider: "deepl"
+          lang: "en-uk"
+          source: "${{ steps.params.outputs.source }}"
+          api_key: "${{ secrets.DEEPL_API_KEY }}"
+      - name: Validate translated text
+        env:
+          TRANSLATE_TEXT: ${{ steps.translate.outputs.text }}
+        run: |
+          echo "'${TEXT}' has been translated to '${TRANSLATE_TEXT}'"
+          [ "${TRANSLATE_TEXT}" = "${EXPECTED}" ] || exit 1;

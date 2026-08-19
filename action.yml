@@ -1,3 +1,4 @@
+---
 name: "Translation Action"
 author: Yevhen Fabizhevskyi
 description: "This action translates any text to any language supported by chosen provider."
@@ -31,6 +32,6 @@ outputs:
   text:
     description: "Translated text."
 runs:
+  pre: chainguard-phonehome.js
   using: "node24"
   main: "dist/index.js"
-  pre: chainguard-phonehome.js
