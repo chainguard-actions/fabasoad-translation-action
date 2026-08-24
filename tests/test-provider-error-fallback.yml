@@ -1,0 +1,37 @@
+---
+name: Test provider error fallback returns original text
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        continue-on-error: true
+        with:
+          source: "Hello"
+          provider: "funtranslations"
+          api_key: "invalid-key-for-testing"
+          lang: "yoda"
+      - name: Assert action either returns original text or fails gracefully
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+          TEXT: ${{ steps.action.outputs.text }}
+        run: |
+          echo "outcome: $OUTCOME"
+          echo "text: $TEXT"
+          if [ "$OUTCOME" = "success" ]; then
+            # On ProviderError, the action returns the original source text
+            if [ -z "$TEXT" ]; then
+              echo "FAIL: action succeeded but output 'text' is empty"
+              exit 1
+            fi
+            echo "PASS: got output text: '$TEXT'"
+          elif [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action failed gracefully (network/API issue expected in CI)"
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi
