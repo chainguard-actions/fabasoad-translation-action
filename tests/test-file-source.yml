@@ -1,0 +1,28 @@
+---
+name: Test file source input with MyMemory provider
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Create source file
+        run: |
+          echo "Hello" > "$GITHUB_WORKSPACE/source.txt"
+      - id: action
+        uses: .
+        with:
+          source: "${{ github.workspace }}/source.txt"
+          provider: "mymemory"
+          lang: "en|fr"
+      - name: Assert output text is set from file
+        env:
+          ACTUAL: ${{ steps.action.outputs.text }}
+        run: |
+          echo "actual: $ACTUAL"
+          if [ -z "$ACTUAL" ]; then
+            echo "FAIL: expected 'text' output to be non-empty when source is a file"
+            exit 1
+          fi
+          echo "PASS: got translated text from file: $ACTUAL"
