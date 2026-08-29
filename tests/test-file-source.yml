@@ -1,0 +1,28 @@
+---
+name: Test file-based source input
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Create source file
+        run: |
+          echo -n "Good morning" > "$GITHUB_WORKSPACE/source.txt"
+      - id: translate
+        uses: .
+        with:
+          source: "${{ github.workspace }}/source.txt"
+          provider: "mymemory"
+          lang: "en|fr"
+      - name: Assert output is set
+        env:
+          ACTUAL: ${{ steps.translate.outputs.text }}
+        run: |
+          echo "actual: $ACTUAL"
+          if [ -z "$ACTUAL" ]; then
+            echo "FAIL: expected non-empty translated text output from file source"
+            exit 1
+          fi
+          echo "PASS: got translated text from file: $ACTUAL"
