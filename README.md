@@ -6,19 +6,19 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 ## Versions
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v4 | [`v4`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4) | [`43a711f`](https://github.com/fabasoad/translation-action/commit/43a711f7512787f0aacb6f48833c9d383791bb9e) |
-| v4.2 | [`v4.2`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2) | [`43a711f`](https://github.com/fabasoad/translation-action/commit/43a711f7512787f0aacb6f48833c9d383791bb9e) |
-| v4.2.0 | [`v4.2.0`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.0) | [`491ca2b`](https://github.com/fabasoad/translation-action/commit/491ca2b54f832af29e0b8b6f6fdef468d4568bd7) |
-| v4.2.1 | [`v4.2.1`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.1) | [`7a9f393`](https://github.com/fabasoad/translation-action/commit/7a9f3930d283cb63934c0e73e6d292abe57bd82f) |
-| v4.2.2 | [`v4.2.2`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.2) | [`7ac75a1`](https://github.com/fabasoad/translation-action/commit/7ac75a16abe8199e713775f8bbb405ba84d94c2a) |
-| v4.2.3 | [`v4.2.3`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.3) | [`1c80997`](https://github.com/fabasoad/translation-action/commit/1c80997dbbcc8dbe8b7bc7cd3ac4d8479964d464) |
-| v4.2.4 | [`v4.2.4`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.4) | [`1476a9d`](https://github.com/fabasoad/translation-action/commit/1476a9db97feaa816029bc027103eb89f3b017bf) |
-| v4.2.5 | [`v4.2.5`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.5) | [`3db8eba`](https://github.com/fabasoad/translation-action/commit/3db8ebaa3d9c90d8ca9943e9bf281ca82e4468e4) |
-| v4.2.6 | [`v4.2.6`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.6) | [`4868446`](https://github.com/fabasoad/translation-action/commit/486844691810f3721449e08160be7943a1493a3a) |
-| v4.2.7 | [`v4.2.7`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.7) | [`52fde40`](https://github.com/fabasoad/translation-action/commit/52fde40e6ed785c719eb3586025f8b28b93bb870) |
-| v4.2.8 | [`v4.2.8`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.8) | [`43a711f`](https://github.com/fabasoad/translation-action/commit/43a711f7512787f0aacb6f48833c9d383791bb9e) |
+| Version | Tag | Upstream commit | Hardening report |
+|---------|-----|-----------------|------------------|
+| v4 | [`v4`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4) | [`43a711f`](https://github.com/fabasoad/translation-action/commit/43a711f7512787f0aacb6f48833c9d383791bb9e) | — |
+| v4.2 | [`v4.2`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2) | [`43a711f`](https://github.com/fabasoad/translation-action/commit/43a711f7512787f0aacb6f48833c9d383791bb9e) | — |
+| v4.2.0 | [`v4.2.0`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.0) | [`491ca2b`](https://github.com/fabasoad/translation-action/commit/491ca2b54f832af29e0b8b6f6fdef468d4568bd7) | [`HARDENING.md`](https://github.com/chainguard-actions/fabasoad-translation-action/blob/v4.2.0/HARDENING.md) |
+| v4.2.1 | [`v4.2.1`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.1) | [`7a9f393`](https://github.com/fabasoad/translation-action/commit/7a9f3930d283cb63934c0e73e6d292abe57bd82f) | [`HARDENING.md`](https://github.com/chainguard-actions/fabasoad-translation-action/blob/v4.2.1/HARDENING.md) |
+| v4.2.2 | [`v4.2.2`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.2) | [`7ac75a1`](https://github.com/fabasoad/translation-action/commit/7ac75a16abe8199e713775f8bbb405ba84d94c2a) | [`HARDENING.md`](https://github.com/chainguard-actions/fabasoad-translation-action/blob/v4.2.2/HARDENING.md) |
+| v4.2.3 | [`v4.2.3`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.3) | [`1c80997`](https://github.com/fabasoad/translation-action/commit/1c80997dbbcc8dbe8b7bc7cd3ac4d8479964d464) | [`HARDENING.md`](https://github.com/chainguard-actions/fabasoad-translation-action/blob/v4.2.3/HARDENING.md) |
+| v4.2.4 | [`v4.2.4`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.4) | [`1476a9d`](https://github.com/fabasoad/translation-action/commit/1476a9db97feaa816029bc027103eb89f3b017bf) | [`HARDENING.md`](https://github.com/chainguard-actions/fabasoad-translation-action/blob/v4.2.4/HARDENING.md) |
+| v4.2.5 | [`v4.2.5`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.5) | [`3db8eba`](https://github.com/fabasoad/translation-action/commit/3db8ebaa3d9c90d8ca9943e9bf281ca82e4468e4) | [`HARDENING.md`](https://github.com/chainguard-actions/fabasoad-translation-action/blob/v4.2.5/HARDENING.md) |
+| v4.2.6 | [`v4.2.6`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.6) | [`4868446`](https://github.com/fabasoad/translation-action/commit/486844691810f3721449e08160be7943a1493a3a) | [`HARDENING.md`](https://github.com/chainguard-actions/fabasoad-translation-action/blob/v4.2.6/HARDENING.md) |
+| v4.2.7 | [`v4.2.7`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.7) | [`52fde40`](https://github.com/fabasoad/translation-action/commit/52fde40e6ed785c719eb3586025f8b28b93bb870) | [`HARDENING.md`](https://github.com/chainguard-actions/fabasoad-translation-action/blob/v4.2.7/HARDENING.md) |
+| v4.2.8 | [`v4.2.8`](https://github.com/chainguard-actions/fabasoad-translation-action/tree/v4.2.8) | [`43a711f`](https://github.com/fabasoad/translation-action/commit/43a711f7512787f0aacb6f48833c9d383791bb9e) | [`HARDENING.md`](https://github.com/chainguard-actions/fabasoad-translation-action/blob/v4.2.8/HARDENING.md) |
 
 ## Privacy
 
