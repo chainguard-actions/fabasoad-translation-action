@@ -4,8 +4,13 @@
   "version": "v4.2.8",
   "commit_sha": "43a711f7512787f0aacb6f48833c9d383791bb9e",
   "url": "https://github.com/fabasoad/translation-action",
-  "policy_sha": "d636be7e43ef829af6e853da6b3c7566db9f72fe",
+  "policy_sha": "374911c4be584df24e6da57af2d990570ef0f859",
   "test_policy_sha": "843adf9e4b8f85d0c08b27b9d0b09dd094b54702",
   "test_agent_version": "2",
-  "harden_agent_version": "2"
+  "harden_agent_version": "2",
+  "dist_artifact": {
+    "gcs_uri": "gs://patch-actions-node-artifacts/dist-artifacts/fabasoad/translation-action/v4.2.8/sha256-b239a5a063b3e8920bd659214f65e1f8a20243ecb3edafa1091a484a7ee652f9.tar.gz",
+    "sha256": "b239a5a063b3e8920bd659214f65e1f8a20243ecb3edafa1091a484a7ee652f9",
+    "size_bytes": 647748
+  }
 }
